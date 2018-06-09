@@ -2,6 +2,7 @@ package com.chibun.controller;
 
 import com.chibun.dao.UserDao;
 import com.chibun.entry.User;
+import com.chibun.mapper.UserMapper;
 import com.chibun.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,9 @@ public class UserCtrl {
     @Autowired
     private UserDao userDAO;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @RequestMapping("addUser")
     public String addUser(String name, int age) {
         userService.addUser(name, age);
@@ -25,5 +29,14 @@ public class UserCtrl {
         User one = userDAO.findById(id).get();
         System.out.println(one.getName());
         return one;
+    }
+    @RequestMapping("/getByName")
+    public User getOne(String name) {
+        return userMapper.getUserByName(name);
+    }
+    @RequestMapping("/addUserByMyBaties")
+    public String addUserByMyBaties(String name, Integer age) {
+        userMapper.adduser(name, age);
+        return "success";
     }
 }
