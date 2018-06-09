@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@ComponentScan("com.chibun.controller")
+@ComponentScan({"com.chibun.controller","com.chibun.exception"})
 @EnableAutoConfiguration
 public class App {
     public static void main(String[] args) {
