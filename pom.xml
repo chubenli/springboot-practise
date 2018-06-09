@@ -15,11 +15,17 @@
         <version>2.0.2.RELEASE</version>
     </parent>
 
-    <!-- SpringBoot-web组件 springmvc+spring+mybatis -->
     <dependencies>
+        <!-- SpringBoot-web组件 springmvc+spring+mybatis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- 引入freeMarker的依赖包. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
     </dependencies>
 
