@@ -34,6 +34,12 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
+        <!--整合jpa,和jdbc是一个东东 Java Persistence API的简称，中文名Java持久层API-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
         <!--数据库驱动-->
         <dependency>
             <groupId>mysql</groupId>
