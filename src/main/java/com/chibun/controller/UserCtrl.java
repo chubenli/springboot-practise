@@ -8,12 +8,16 @@ import com.chibun.test01.mapper.UserMapperTest01;
 import com.chibun.test01.service.IUserServiceTest01;
 import com.chibun.test01.service.impl.UserServiceTest01Impl;
 import com.chibun.test02.mapper.UserMapperTest02;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class UserCtrl {
+    private final static Logger logger = LoggerFactory.getLogger(UserCtrl.class);
     @Autowired
     private IUserService userService;
     @Autowired
@@ -59,6 +63,7 @@ public class UserCtrl {
 
     @RequestMapping("/getTest01ByName")
     public User getOne2Test01(String name) {
+        logger.info("############getTest01ByName############name:"+ name);
         return test01.getUserByName(name);
     }
 
