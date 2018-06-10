@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -26,6 +27,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @MapperScan("com.chibun.mapper")
 @EnableConfigurationProperties(value = { DBConfig1.class, DBConfig2.class })//分布式事务注解
 @EnableScheduling//开启Springboot的任务调度
+@EnableAsync
 public class App {
     public static void main(String[] args) {
         //使用主函数作为程序启动的入口

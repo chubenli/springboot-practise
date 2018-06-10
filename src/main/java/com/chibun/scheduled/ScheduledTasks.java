@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScheduledTasks {
 
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 60000)
     public void reportCurrentTime() {
         System.out.println("我正在每个隔1秒钟执行调度的任务。。。。。。。。。" );
     }

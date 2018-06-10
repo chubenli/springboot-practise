@@ -28,22 +28,24 @@ public class WebLogAspect {
 	public void doBefore(JoinPoint joinPoint) throws Throwable {
 		// 接收到请求，记录请求内容
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-		HttpServletRequest request = attributes.getRequest();
-		logger.info("#########################请求开始#############################");
-		// 记录下请求内容
-		logger.info("URL : " + request.getRequestURL().toString());
-		logger.info("HTTP_METHOD : " + request.getMethod());
-		logger.info("IP : " + request.getRemoteAddr());
-		Enumeration<String> enu = request.getParameterNames();
-		while (enu.hasMoreElements()) {
-			String name = (String) enu.nextElement();
-			logger.info("name:{},value:{}", name, request.getParameter(name));
+		if(attributes!=null){
+			HttpServletRequest request = attributes.getRequest();
+			logger.info("#########################请求开始#############################");
+			// 记录下请求内容
+			logger.info("URL : " + request.getRequestURL().toString());
+			logger.info("HTTP_METHOD : " + request.getMethod());
+			logger.info("IP : " + request.getRemoteAddr());
+			Enumeration<String> enu = request.getParameterNames();
+			while (enu.hasMoreElements()) {
+				String name = (String) enu.nextElement();
+				logger.info("name:{},value:{}", name, request.getParameter(name));
+			}
 		}
 	}
 	@AfterReturning(returning = "ret", pointcut = "webLog()")
 	public void doAfterReturning(Object ret) throws Throwable {
 		// 处理完请求，返回内容
-		logger.info("RESPONSE : " + ret.toString());
+		logger.info("RESPONSE : " + ret);
 		logger.info("#########################响应结束#############################");
 	}
 }

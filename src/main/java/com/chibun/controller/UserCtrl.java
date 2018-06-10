@@ -11,6 +11,7 @@ import com.chibun.test02.mapper.UserMapperTest02;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -86,4 +87,26 @@ public class UserCtrl {
     public User getOne2Test02(String name) {
         return test02.getUserByName(name);
     }
+    @RequestMapping("/sendMsg")
+    public String sendMsg() {
+        /**
+         * 没有加@Async 的执行结果为1342
+         * 加了以后的执行结果1234
+         */
+        System.out.println("#####################snedMsg1");
+        userServiceTest01.sendMsg();//这个方法加异步调用以后相当于将该方法----->变成一个线程调用该方法 new userTest().start();
+        System.out.println("#####################snedMsg2");
+        return "success";
+    }
+    class userTest extends Thread{
+        @Override
+        public void run() {
+            System.out.println("#####################snedMsg3");
+            for (int i = 0; i < 3; i++) {
+                System.out.println("i:" + i);
+            }
+            System.out.println("#####################snedMsg4");
+        }
+    }
+
 }
