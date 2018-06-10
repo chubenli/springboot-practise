@@ -11,7 +11,9 @@ import com.chibun.test02.mapper.UserMapperTest02;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -109,4 +111,10 @@ public class UserCtrl {
         }
     }
 
+    @Value("${myName}")
+    private String myName;
+    @RequestMapping("/getVal")
+    public String getVal(){
+        return myName;
+    }
 }
