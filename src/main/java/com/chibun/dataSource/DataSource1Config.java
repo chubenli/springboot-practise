@@ -15,14 +15,14 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 
-@Configuration // 注册到springboot容器中
-@MapperScan(basePackages = "com.chibun.test01.mapper", sqlSessionFactoryRef = "test01SqlSessionFactory")
+//@Configuration // 注册到springboot容器中
+//@MapperScan(basePackages = "com.chibun.test01.mapper", sqlSessionFactoryRef = "test01SqlSessionFactory")
 public class DataSource1Config {
 
     /**
      *
      * @methodDesc: 功能描述:(配置test1数据库)
-     */
+     *//*
     @Bean(name = "test01DataSource")
     @ConfigurationProperties(prefix = "spring.datasource.test01")
     @Primary
@@ -30,10 +30,10 @@ public class DataSource1Config {
         return DataSourceBuilder.create().build();
     }
 
-    /**
+    *//**
      *
      * @methodDesc: 功能描述:(test1 sql会话工厂)
-     */
+     *//*
     @Bean(name = "test01SqlSessionFactory")
     @Primary
     public SqlSessionFactory testSqlSessionFactory(@Qualifier("test01DataSource") DataSource dataSource)
@@ -46,10 +46,10 @@ public class DataSource1Config {
         return bean.getObject();
     }
 
-    /**
+    *//**
      *
      * @methodDesc: 功能描述:(test1 事物管理)
-     */
+     *//*
     @Bean(name = "test01TransactionManager")
     @Primary
     public DataSourceTransactionManager testTransactionManager(@Qualifier("test01DataSource") DataSource dataSource) {
@@ -62,5 +62,5 @@ public class DataSource1Config {
             @Qualifier("test01SqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
-
+*/
 }

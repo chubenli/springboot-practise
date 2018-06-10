@@ -1,9 +1,12 @@
 package com.chibun;
 
+import com.chibun.dataSource.DBConfig1;
+import com.chibun.dataSource.DBConfig2;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
@@ -20,6 +23,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("com.chibun.dao")
 @EntityScan("com.chibun.entry")
 @MapperScan("com.chibun.mapper")
+@EnableConfigurationProperties(value = { DBConfig1.class, DBConfig2.class })//分布式事务注解
 public class App {
     public static void main(String[] args) {
         //使用主函数作为程序启动的入口

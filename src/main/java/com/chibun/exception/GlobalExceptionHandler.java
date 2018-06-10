@@ -12,7 +12,7 @@ import java.util.Map;
 @ControllerAdvice//aop的异常通知注解
 public class GlobalExceptionHandler {
     //指定捕获异常类型
-    @ExceptionHandler(RuntimeException.class)
+    //@ExceptionHandler(RuntimeException.class)
     @ResponseBody//json返回
     public Map<String, String> errorResult(){
         Map<String ,String> error = new HashMap<>();
