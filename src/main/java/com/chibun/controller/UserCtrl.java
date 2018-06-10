@@ -5,6 +5,7 @@ import com.chibun.entry.User;
 import com.chibun.mapper.UserMapper;
 import com.chibun.service.IUserService;
 import com.chibun.test01.mapper.UserMapperTest01;
+import com.chibun.test01.service.IUserServiceTest01;
 import com.chibun.test02.mapper.UserMapperTest02;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,8 @@ public class UserCtrl {
 
     @Autowired
     private UserMapperTest01 test01;
+    @Autowired
+    private IUserServiceTest01 userServiceTest01;
 
     @RequestMapping("/addUser2Test01")
     public String addUser2Test01(String name, Integer age) {
@@ -56,6 +59,12 @@ public class UserCtrl {
     @RequestMapping("/getTest01ByName")
     public User getOne2Test01(String name) {
         return test01.getUserByName(name);
+    }
+
+    @RequestMapping("/addUserTest01")
+    public String addUserTest01(String name, Integer age) {
+        userServiceTest01.insertUser(name, age);
+        return "success";
     }
 
     @Autowired
